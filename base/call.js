@@ -29,7 +29,7 @@ function show(caller) {
  * call 允許用戶像直接調用目標函數一樣傳參，主要用於手動。
  * 而 apply 允許用戶以數組形式傳入參數列表，主要用自動化。
  * 因為在一個函數內，可以通過 arguments 獲得其參數列表。
- *  
+ * 
  */
 show.call(o, 'A');
 
@@ -52,3 +52,20 @@ function foo(caller) {
 }
 
 foo('CY');
+
+let tool = require('../tool');
+/*
+ * 自定義一個類數組
+ *
+ * 要求:
+ * 1.對象具有 length 屬性				--必要條件
+ * 2.對象應該具有數字（字符數字亦可）屬性	--不是必要條件
+ */
+let likeArray = {
+	length: 1,
+	name: 'jack',  		//無關緊要
+	0: 'Hi',
+	'1': 'Wo'
+}
+tool.isLikeArray(likeArray);
+show.apply(user, likeArray);

@@ -27,3 +27,21 @@ module.exports.enumProPnt = function(o) {
 	if (properties.length == 0) return console.log('對象沒有可枚舉的屬性');
 	console.log('Properties:['+properties+']');
 }
+
+/**
+ * 判斷一個對像是否是數組
+ *
+ * 資源來自《JavaScript權威指南》
+ */
+module.exports.isLikeArray = function(o) {
+	if (o &&
+		typeof o === 'object' &&
+		isFinite(o.length) &&
+		o.length >= 0 &&
+		o.length === Math.floor(o.length) &&
+		o.length < 4294967296) {
+		return true;
+	} else {
+		return false;
+	}
+}
