@@ -1,4 +1,3 @@
-
 let tool = require('../tool');
 
 /*
@@ -62,9 +61,32 @@ Object.defineProperty(Bar.prototype, 'getValue', {
 
 let bar = new Bar();
 Object.freeze(bar);
+console.log(Object.keys(bar));
 tool.enumProPnt(bar);
 bar.setValue = 100;
 console.log(bar.getValue);
 
 delete bar.value;
 console.log(bar.value);
+
+/*
+ * 在原型上添加一個函數
+ *
+ * 以此創建的函數會被枚舉出來
+ */
+Bar.prototype.fn = function() {
+	console.log(this === Bar.prototype);		// false
+	console.log(this === bar);					// true
+	console.log(this.value);
+}
+bar.fn();
+
+// 在原型上綁定值的屬性
+Object.defineProperty(Bar.prototype, 'v', {
+	value: 10
+});
+// 查看原型上可以被枚舉的函數
+console.log(Object.keys(Bar.prototype));		//[ 'fn' ]
+console.log(Object.getOwnPropertyNames(Bar.prototype));		//[ 'constructor', 'setValue', 'getValue', 'fn' ]
+console.log(Bar.prototype.v);		// 獲取原型上的屬性值
+console.log(JSON.stringify(Bar.prototype));		// {} JSON 不會序列化原型對象

@@ -57,5 +57,9 @@ module.exports.isLikeArray = function(o) {
  * @return 將類數組轉換成數組對象
  */
 module.exports.toArray = function(o) {
-	return Array.prototype.slice.call(o);
+	// 此為 es5 的方式
+	// return Array.prototype.slice.call(o);
+
+	// 此為 es6 的新方式， Array.from 意為將一個類數組或迭代對象轉換成數組對象
+	return Array.from(o);
 }

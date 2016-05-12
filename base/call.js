@@ -69,3 +69,6 @@ let likeArray = {
 }
 tool.isLikeArray(likeArray);
 show.apply(user, likeArray);
+
+let arr = Array.from(likeArray);
+console.log(arr instanceof Array);
