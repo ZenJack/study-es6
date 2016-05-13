@@ -63,3 +63,4 @@ module.exports.toArray = function(o) {
 	// 此為 es6 的新方式， Array.from 意為將一個類數組或迭代對象轉換成數組對象
 	return Array.from(o);
 }
+
