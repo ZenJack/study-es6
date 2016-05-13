@@ -64,3 +64,4 @@ module.exports.toArray = function(o) {
 	return Array.from(o);
 }
 
+// tool 工具結束
