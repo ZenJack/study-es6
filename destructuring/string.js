@@ -20,5 +20,8 @@
 // 字符串的解構賦值
 const [a,b,c,d] = 'jack';
 console.log(a);
-let {length} = 'jack';
+let str = 'jack';
+let {length} = str;
+let len = str.length;
 console.log(length);		//=> 4
+console.log(len);			//=> 4
