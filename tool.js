@@ -73,6 +73,22 @@ function toArray(o) {
 }
 
 /*
+ * 從一組字符串中解析出數字（整數和小數）
+ *
+ * @param string 待解析的原字符串，裡面可能包含有數字
+ * @return 返回字符串中所有數字的集合（數組形式），如果沒有原字符串中沒有數字，那麼返回空值數組
+ */
+function parseNumber(string) {
+	let pattern = /([1-9]\d*\.\d+)|([1-9]\d*)/g;
+	let result = [];
+	let temp;
+	while (temp = pattern.exec(string)) {
+		result.push(temp[0]);
+	}
+	return result;
+}
+
+/*
  * exports 對象保存的是外部可以被調用的方法名
  * 其初始化為空對象。
  * 傳統對其賦值方式為 module.exports.xxx
@@ -84,4 +100,5 @@ module.exports = {
 	enumProPnt,
 	toArray,
 	isLikeArray,
+	parseNumber,
 };
